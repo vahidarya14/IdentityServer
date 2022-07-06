@@ -50,11 +50,16 @@ namespace IdentityServer
         public static List<TestUser> TestUsers =>
             new List<TestUser>
             {
-
+                new TestUser
+                {
+                    SubjectId = "1",
+                    Username = "demo",
+                    Password = "demo".Sha256()
+                }
             };
 
 
- 
+
 
         public static List<ApiResource> ApiResources =>
          new List<ApiResource>
