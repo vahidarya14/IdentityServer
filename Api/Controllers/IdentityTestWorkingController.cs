@@ -5,6 +5,7 @@ namespace Api.Controllers;
 
 [Route("IdentityTestWorking")]
 [Authorize]
+[ApiController]
 public class IdentityTestWorkingController : ControllerBase
 {
     [HttpGet]
