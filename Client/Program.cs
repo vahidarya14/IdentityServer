@@ -19,7 +19,7 @@ var tokenResponse = await client.RequestClientCredentialsTokenAsync(new ClientCr
 
     ClientId = "client",
     ClientSecret = "secret",
-    Scope = "api1"
+    Scope = "api2" //<<-- ApiScope and ClientScope  in database must have in this name
 });
 
 if (tokenResponse.IsError)
@@ -36,7 +36,7 @@ if (tokenResponse.IsError)
 var apiClient = new HttpClient();
 apiClient.SetBearerToken(tokenResponse.AccessToken);
 
-var response = await apiClient.GetAsync("https://localhost:7053/IdentityTestWorking");
+var response = await apiClient.GetAsync("https://localhost:44347/IdentityTestWorking");
 if (!response.IsSuccessStatusCode)
 {
     Console.WriteLine(response.StatusCode);
