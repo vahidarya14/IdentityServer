@@ -1,0 +1,43 @@
+﻿@model List<ApiScope>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">ApiScope</li>
+    </ol>
+</nav>
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>Enabled </td>
+                <td>Name</td>
+                <td>Display Name </td>
+                <td>Description </td>
+                <td>Required </td>
+                <td>Emphasize </td>
+                <td>Show In Discovery Document </td>
+
+                <td>UserClaims  </td>
+                <td>Properties </td>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@Html.Raw(item.Enabled.Show()) </td>
+                <td>@item.Name</td>
+                <td>@item.DisplayName </td>
+                <td>@item.Description </td>
+                <td>@Html.Raw(item.Required .Show())</td>
+                <td>@Html.Raw(item.Emphasize.Show()) </td>
+                <td>@Html.Raw(item.ShowInDiscoveryDocument.Show()) </td>
+
+                      <td>@(string.Join(',', item.UserClaims.Select(x=>x.Type)))  </td>
+                <td>@(string.Join(',',item.Properties.Select(x=>$"{x.Key}={x.Value}"))) </td>
+            </tr>
+        }
+
+    </table>
+</div>

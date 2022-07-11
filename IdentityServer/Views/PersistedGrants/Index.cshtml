@@ -1,0 +1,41 @@
+﻿@model List<PersistedGrant>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">PersistedGrant</li>
+    </ol>
+</nav>
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Key</td>
+                <td>Type </td>
+                <td>SubjectId</td>
+                <td>SessionId </td>
+                <td>ClientId </td>
+                <td>Description </td>
+                <td>Data </td>
+                <td>CreationTime </td>
+                <td>Expiration </td>
+                <td>ConsumedTime </td>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Key</td>
+                <td>@item.Type</td>
+                <td>@item.SubjectId </td>
+                <td>@item.SessionId </td>
+                <td>@item.ClientId </td>
+                <td>@item.Description </td>
+                <td>@item.Data </td>
+                <td>@item.CreationTime.ToPersian(true) </td>
+                <td>@item.Expiration.ToPersian(true) </td>
+                <td>@item.ConsumedTime.ToPersian(true) </td>
+            </tr>
+        }
+
+    </table>
+</div>

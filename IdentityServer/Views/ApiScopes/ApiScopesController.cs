@@ -3,20 +3,23 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
-namespace IdentityServer.Views.Home
+namespace IdentityServer.Views.ApiResources
 {
-    public class HomeController : Controller
+    public class ApiScopesController : Controller
     {
         ConfigurationDbContext _ConfigurationDbContext;
 
-        public HomeController(ConfigurationDbContext configurationDbContext)
+        public ApiScopesController(ConfigurationDbContext configurationDbContext)
         {
             _ConfigurationDbContext = configurationDbContext;
-        }
 
+        }
         public async Task<IActionResult> IndexAsync()
         {
-            return View();
+            return View(await _ConfigurationDbContext.ApiScopes
+                 .Include(x => x.UserClaims)
+                .Include(x => x.Properties)
+                .ToListAsync());
         }
     }
 }

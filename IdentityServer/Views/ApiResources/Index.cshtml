@@ -1,0 +1,53 @@
+﻿@model List<ApiResource>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">ApiResource</li>
+    </ol>
+</nav>
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>Enabled </td>
+                <td>Name</td>
+                <td>Display Name </td>
+                <td>Description </td>
+                <td>Allowed Access Token Signing Algorithms </td>
+                <td>Show In Discovery Document </td>
+                <td>Created </td>
+                <td>Updated </td>
+                <td>Last Accessed</td>
+                <td>Non Editable </td>
+
+                <td>Secrets    </td>
+                <td>Scopes     </td>
+                <td>UserClaims  </td>
+                <td>Properties </td>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@Html.Raw(item.Enabled.Show()) </td>
+                <td>@item.Name</td>
+                <td>@item.DisplayName </td>
+                <td>@item.Description </td>
+                <td>@item.AllowedAccessTokenSigningAlgorithms </td>
+                <td>@Html.Raw(item.ShowInDiscoveryDocument.Show()) </td>
+                <td>@item.Created.ToPersian() </td>
+                <td>@item.Updated.ToPersian() </td>
+                <td>@item.LastAccessed.ToPersian()</td>
+                <td>@Html.Raw(item.NonEditable.Show()) </td>
+
+                <td>@(string.Join(',', item.Secrets.Select(x=>$"{x.Type}={x.Value}")))  </td>
+                <td>@(string.Join(',', item.Scopes.Select(x=>x.Scope)))  </td>
+                <td>@(string.Join(',', item.UserClaims.Select(x=>x.Type)))  </td>
+                <td>@(string.Join(',',item.Properties.Select(x=>$"{x.Key}={x.Value}"))) </td>
+            </tr>
+        }
+
+    </table>
+</div>

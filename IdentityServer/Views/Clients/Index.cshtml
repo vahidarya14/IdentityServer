@@ -1,0 +1,133 @@
+﻿@model List<Client>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">clients</li>
+    </ol>
+</nav>
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th> Id </th>
+                <th>  Enabled </th>
+                <th>  Client Id </th>
+                <th>  Protocol Type </th>
+                <th>  Require Client Secret </th>
+                <th>  Client Name </th>
+                <th>  Description </th>
+                <th>  Client Uri </th>
+                <th>  Logo Uri </th>
+                <th>  Require Consent </th>
+                <th>  Allow Remember Consent </th>
+                <th>  Always Include User Claims In IdToken </th>
+                <th>  Require Pkce </th>
+                <th>  Allow PlaextPkce </th>
+                <th>  Require Request Object </th>
+                <th>  Allow Access Tokens Via Browser </th>
+                <th>  Front Channel Logout Uri </th>
+                <th>  Front Channel Logout Session Required </th>
+                <th>  Back Channel Logout Uri </th>
+                <th>  Back Channel Logout Session Required </th>
+                <th>  Allow Off line Access </th>
+                <th>  Identity Token Lifetime </th>
+                <th>  Allowed Identity Token Signing Algorithms </th>
+                <th>  Access Token Lifetime </th>
+                <th>  Authorization Code Lifetime </th>
+                <th>  Consent Lifetime </th>
+                <th>  Absolute Refresh Token Lifetime </th>
+                <th>  Sliding Refresh Token Lifetime </th>
+                <th>  Refresh Token Usage </th>
+                <th>  Update Access Token Claims On Refresh </th>
+                <th>  Refresh Token Expiration </th>
+                <th>  Access Token Type </th>
+                <th>  EnableLocal Login </th>
+                <th>  Include Jwt Id </th>
+                <th>  Always Send Client Claims </th>
+                <th>  ClientClaimsPrefix </th>
+                <th>  Pair Wise Subject Salt </th>
+                <th>  Created </th>
+                <th>  Updated </th>
+                <th>  Last Accessed </th>
+                <th>  User Sso Lifetime </th>
+                <th>  User Code Type </th>
+                <th>  Device Code Lifetime </th>
+                <th>  Non Editable </th>
+                <th>  Client Secrets </th>
+                <th>  Allowed Grant Types </th>
+                <th>  Redirect Uris </th>
+                <th>  Post Logout Redirect Uris </th>
+                <th>  Allowed Scopes </th>
+                <th>  Identity Provider Restrictions </th>
+                <th>  Claims </th>
+                <th>  Allowed Cors Origins </th>
+                <th>  Properties </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Client item in Model)
+            {
+                <tr>
+                    <td> @item.Id </td>
+                    <td> @Html.Raw(item.Enabled.Show()) </td>
+                    <td> @item.ClientId </td>
+                    <td> @item.ProtocolType </td>
+                    <td> @Html.Raw(item.RequireClientSecret.Show()) </td>
+                    <td> @item.ClientName </td>
+                    <td> @item.Description </td>
+                    <td> @item.ClientUri </td>
+                    <td> @item.LogoUri </td>
+                    <td> @Html.Raw(item.RequireConsent.Show())</td>
+                    <td> @Html.Raw(item.AllowRememberConsent.Show()) </td>
+                    <td> @Html.Raw(item.AlwaysIncludeUserClaimsInIdToken.Show()) </td>
+                    <td> @Html.Raw(item.RequirePkce.Show())</td>
+                    <td> @Html.Raw(item.AllowPlainTextPkce.Show()) </td>
+                    <td> @Html.Raw(item.RequireRequestObject.Show()) </td>
+                    <td> @Html.Raw(item.AllowAccessTokensViaBrowser.Show()) </td>
+                    <td> @item.FrontChannelLogoutUri </td>
+                    <td> @Html.Raw(item.FrontChannelLogoutSessionRequired.Show()) </td>
+                    <td> @item.BackChannelLogoutUri </td>
+                    <td> @Html.Raw(item.BackChannelLogoutSessionRequired.Show()) </td>
+                    <td> @Html.Raw(item.AllowOfflineAccess.Show()) </td>
+                    <td> @item.IdentityTokenLifetime </td>
+                    <td> @item.AllowedIdentityTokenSigningAlgorithms </td>
+                    <td> @item.AccessTokenLifetime </td>
+                    <td> @item.AuthorizationCodeLifetime </td>
+                    <td> @item.ConsentLifetime </td>
+                    <td> @item.AbsoluteRefreshTokenLifetime </td>
+                    <td> @item.SlidingRefreshTokenLifetime </td>
+                    <td> @item.RefreshTokenUsage </td>
+                    <td> @Html.Raw(item.UpdateAccessTokenClaimsOnRefresh.Show()) </td>
+                    <td> @item.RefreshTokenExpiration </td>
+                    <td> @item.AccessTokenType </td>
+                    <td> @Html.Raw(item.EnableLocalLogin.Show()) </td>
+                    <td> @Html.Raw(item.IncludeJwtId.Show())</td>
+                    <td> @Html.Raw(item.AlwaysSendClientClaims.Show()) </td>
+                    <td> @item.ClientClaimsPrefix </td>
+                    <td> @item.PairWiseSubjectSalt </td>
+                    <td> @item.Created.ToPersian() </td>
+                    <td> @item.Updated.ToPersian()  </td>
+                    <td> @item.LastAccessed.ToPersian()  </td>
+                    <td> @item.UserSsoLifetime </td>
+                    <td> @item.UserCodeType </td>
+                    <td> @item.DeviceCodeLifetime </td>
+                    <td> @Html.Raw(item.NonEditable.Show()) </td>
+                    <td>@(string.Join(',',item.AllowedGrantTypes.Select(x=>$"{x.GrantType}"))) </td>
+                    <td>@(string.Join(',',item.ClientSecrets.Select(x=>$"{x.Type}={x.Value}"))) </td>
+                    <td>@(string.Join(',',item.RedirectUris.Select(x=>$"{x.RedirectUri}"))) </td>
+                    <td>@(string.Join(',',item.PostLogoutRedirectUris.Select(x=>$"{x.PostLogoutRedirectUri}"))) </td>
+                    <td>@(string.Join(',',item.AllowedScopes.Select(x=>$"{x.Scope}"))) </td>
+                    <td>@(string.Join(',',item.IdentityProviderRestrictions.Select(x=>$"{x.Provider}"))) </td>
+                    <td>@(string.Join(',',item.Claims.Select(x=>$"{x.Type}={x.Value}"))) </td>
+                    <td>@(string.Join(',',item.AllowedCorsOrigins.Select(x=>$"{x.Origin}"))) </td>
+                    <td>@(string.Join(',',item.Properties.Select(x=>$"{x.Key}={x.Value}"))) </td>
+
+                    @* <td>@(string.Join(',', item.Secrets.Select(x=>$"{x.Type}={x.Value}")))  </td>
+                <td>@(string.Join(',', item.Scopes.Select(x=>x.Scope)))  </td>
+                <td>@(string.Join(',', item.UserClaims.Select(x=>x.Type)))  </td>*@
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

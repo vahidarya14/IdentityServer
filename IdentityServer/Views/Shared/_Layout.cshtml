@@ -10,35 +10,53 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark" aria-label="Seventh navbar example">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WebApplication2</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExampleXxl" aria-controls="navbarsExampleXxl" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+
+                <div class="collapse navbar-collapse" id="navbarsExampleXxl">
+                    <ul class="navbar-nav me-auto mb-2 mb-xl-0">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdownXxl" data-bs-toggle="dropdown" aria-expanded="false">Users/Roles</a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownXxl">
+                                <li><a class="dropdown-item" href="#">Users</a></li>
+                                <li><a class="dropdown-item" href="#">Roles</a></li>
+                            </ul>
                         </li>
+
+                           <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdownXxl" data-bs-toggle="dropdown" aria-expanded="false">Clients/Resources</a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownXxl">
+                                <li><a asp-area="" asp-controller="clients" asp-action="Index" class="dropdown-item" >Clients</a></li>
+                                <li><a asp-area="" asp-controller="apiresources" asp-action="Index" class="dropdown-item" >Api Resources</a></li>
+                                <li><a asp-area="" asp-controller="apiscopes" asp-action="Index" class="dropdown-item" >Api Scopes</a></li>
+                                <li><a asp-area="" asp-controller="identityResources" asp-action="Index" class="dropdown-item" >Identity Resources</a></li>
+                                <li><a asp-area="" asp-controller="persistedgrants" asp-action="Index" class="dropdown-item" >Persisted Grants</a></li>
+                            </ul>
+                        </li>
+
                     </ul>
+                    <form role="search">
+                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                    </form>
                 </div>
             </div>
         </nav>
     </header>
     <div class="container-fluid">
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-3 pt-4">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="footer text-muted">
         <div class="container">
-            &copy; 2022 - WebApplication2 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            @*&copy; 2022 - WebApplication2 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>*@
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

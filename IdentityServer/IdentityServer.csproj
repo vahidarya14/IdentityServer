@@ -23,4 +23,9 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
   </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Views\Roles\" />
+    <Folder Include="Views\Users\" />
+  </ItemGroup>
 </Project>
