@@ -2,6 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
+using IdentityServer.Data;
 using IdentityServer4.EntityFramework.DbContexts;
 using IdentityServer4.EntityFramework.Mappers;
 using Microsoft.AspNetCore.Builder;
@@ -56,6 +57,9 @@ namespace IdentityServer
                         sql => sql.MigrationsAssembly(migrationsAssembly));
                 });
             ///////////////////////////////////////////////////////////////////////////////
+
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
+
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
@@ -132,6 +136,10 @@ namespace IdentityServer
                 });
                 context.SaveChanges();
             }
+
+
+
+            serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>().Database.Migrate();
         }
 
     } 
