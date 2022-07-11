@@ -5,7 +5,7 @@ using Newtonsoft.Json.Linq;
 
 #region call identity server
 var client = new HttpClient();
-var disco = await client.GetDiscoveryDocumentAsync("https://localhost:5001");
+var disco = await client.GetDiscoveryDocumentAsync("http://localhost:21840");
 if (disco.IsError)
 {
     Console.WriteLine(disco.Error);
