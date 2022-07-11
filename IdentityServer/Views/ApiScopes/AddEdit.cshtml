@@ -1,0 +1,106 @@
+﻿@model ApiScope
+@{
+    ViewData["Title"] = "AddEdit";
+}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page">ApiScope</li>
+        <li class="breadcrumb-item active" aria-current="page">add_edit</li>
+    </ol>
+</nav>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-check form-switch">
+                <input class="form-check-input" asp-for="Enabled" type="checkbox">
+                <label class="form-check-label" for="Enabled">Enabled</label>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DisplayName" class="control-label"></label>
+                <input asp-for="DisplayName" class="form-control" />
+                <span asp-validation-for="DisplayName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-check form-switch">
+                <input class="form-check-input" asp-for="Required" type="checkbox">
+                <label class="form-check-label" for="Enabled">Required</label>
+            </div>
+
+            <div class="form-check form-switch">
+                <input class="form-check-input" asp-for="Emphasize" type="checkbox">
+                <label class="form-check-label" for="Enabled">Emphasize</label>
+            </div>
+
+            <div class="form-check form-switch">
+                <input class="form-check-input" asp-for="ShowInDiscoveryDocument" type="checkbox">
+                <label class="form-check-label" for="Enabled">ShowInDiscoveryDocument</label>
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4">
+        UserClaims
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            @foreach (var item in Model.UserClaims)
+            {
+                <tr>
+                    <td>@item.Type</td>
+                </tr>
+            }
+        </table>
+    </div>
+
+    <div class="col-md-4">
+        Properties
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Key</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            @foreach (var item in Model.Properties)
+            {
+                <tr>
+                    <td>@item.Key</td>
+                    <td>@item.Value</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

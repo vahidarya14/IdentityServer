@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using IdentityServer.Views.ApiResources;
 
 namespace IdentityServer.Data
 {
@@ -14,5 +15,9 @@ namespace IdentityServer.Data
         {
             base.OnModelCreating(builder);
         }
+
+        public DbSet<IdentityServer.Views.ApiResources.apiscope2> apiscope2 { get; set; }
+
+        public DbSet<IdentityServer.Views.ApiResources.ApiResource2> ApiResource2 { get; set; }
     }
 }

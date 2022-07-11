@@ -21,5 +21,17 @@ namespace IdentityServer.Views.ApiResources
                 .Include(x => x.Properties)
                 .ToListAsync());
         }
+
+        public async Task<IActionResult> AddEdit(long id)
+        {
+            return View(await _ConfigurationDbContext.ApiScopes
+                 .Include(x => x.UserClaims)
+                .Include(x => x.Properties)
+                .FirstOrDefaultAsync(x=>x.Id==id));
+        }
+
+
     }
+
+    public class apiscope2 : IdentityServer4.EntityFramework.Entities.ApiScope { }
 }

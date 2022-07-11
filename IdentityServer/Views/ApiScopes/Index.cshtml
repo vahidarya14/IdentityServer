@@ -4,7 +4,9 @@
         <li class="breadcrumb-item active" aria-current="page">ApiScope</li>
     </ol>
 </nav>
-
+<p>
+    <a asp-action="addedit">Create New</a>
+</p>
 <div class="table-responsive">
     <table class="table">
         <thead>
@@ -25,7 +27,9 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.Id</td>
+                <td>@item.Id
+                 <a href="/ApiScopes/addedit?id=@item.Id">edit</a>
+                </td>
                 <td>@Html.Raw(item.Enabled.Show()) </td>
                 <td>@item.Name</td>
                 <td>@item.DisplayName </td>
