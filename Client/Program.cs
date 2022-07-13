@@ -19,7 +19,7 @@ var tokenResponse = await client.RequestClientCredentialsTokenAsync(new ClientCr
 
     ClientId = "client",
     ClientSecret = "secret",
-    Scope = "api2" //<<-- ApiScope and ClientScope  in database must have in this name
+    Scope = "api2" //<<-- ApiScope and ClientScope  in database must have in this name and must not be reqular ClientScope
 });
 
 if (tokenResponse.IsError)
